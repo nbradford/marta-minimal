@@ -1,0 +1,12 @@
+########################
+# misc / editors
+########################
+*~
+*#
+.DS_STORE
+.netbeans
+nbproject
+.idea
+*.sublime-project
+*.sublime-workspace
+*.sass-cache*
