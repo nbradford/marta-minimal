@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   <style>
     [ng-cloak] {
       display: none;
@@ -41,21 +44,34 @@ a=a.angular||(a.angular={});a.$$minErr=a.$$minErr||d;return a.module||(a.module=
       'js/directives.js'
     ], function() {
       // when all is done, execute bootstrap angular application
-      angular.bootstrap(document, ['martaMinimal']);
+      angular.bootstrap(document, ['martaMin']);
     });
   </script>
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-cloak>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <div id="wrap">
+    <div class="header" ng-controller="HeaderCtrl">
 
-  <div ng-view></div>
+      <div class="back-button">
+        <a class="button" ng-class="isRoot ? 'hidden' : ''">
+          <i class="fa fa-arrow-left"></i> {{isRoot}}
+        </a>
+        <span>&nbsp</span>
+      </div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+      <span class="title">marta.min</span>
 
+      <div class="refresh-button">
+        <a class="button">
+          <i class="fa fa-refresh"></i> Auto
+        </a>
+      </div>
+
+    </div>
+
+    <div ng-view></div>
+  </div>
 </body>
 </html>

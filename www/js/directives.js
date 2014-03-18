@@ -3,9 +3,15 @@
 /* Directives */
 
 
-angular.module('martaMinimal.directives', []).
-  directive('appVersion', ['version', function(version) {
-    return function(scope, elm, attrs) {
-      elm.text(version);
-    };
-  }]);
+angular.module('martaMin.directives', [])
+    .directive('stationItem', [
+        function() {
+            return {
+                restrict: 'E',
+                templateUrl: 'partials/station-item.html',
+                scope: {
+                    name: '=',
+                    data: '='
+                },
+            };
+        }]);

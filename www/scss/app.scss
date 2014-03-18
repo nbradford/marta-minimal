@@ -1,0 +1,183 @@
+@import "reset";
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+/*
+*   ///////////\\\\\\\\\\\\
+*   || TABLE OF CONTENTS ||
+*   \\\\\\\\\\\////////////
+*   
+*   0.0.0 SCSS VARS
+*   --- 0.1.0 MIXINS
+*   --- --- 0.1.1 STYLES
+*   --- 0.2.0 BREAKPOINTS
+*   --- 0.3.0 COLORS
+*   1.0.0 GENERAL
+*   --- 1.1.0 TYPOGRAPHY
+*   --- 1.2.0 FORMS
+*   --- --- 1.2.1 INPUT
+*   --- --- 1.2.2 BUTTONS
+*   2.0.0 SPECIFIC
+*   --- 2.1.0 HEADER
+*   --- 2.2.0 STATION LIST
+*
+*/
+
+/* 0.0.0 SCSS VARS */
+
+/* 0.1.0 MIXINS */
+
+@mixin font-ratio($ratio) {
+    font-size: golden-ratio(em(14), $ratio);
+}
+
+/* 0.1.1 STYLES */
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset em($top) em($left) em($blur) $color;
+        -moz-box-shadow:inset em($top) em($left) em($blur) $color;
+        box-shadow:inset em($top) em($left) em($blur) $color;
+    } @else {
+        -webkit-box-shadow: em($top) em($left) em($blur) $color;
+        -moz-box-shadow: em($top) em($left) em($blur) $color;
+        box-shadow: em($top) em($left) em($blur) $color;
+    }
+}
+
+@mixin border-radius($top, $right, $bottom, $left) {
+    -webkit-border-radius: em($top) em($right) em($bottom) em($left);
+    -moz-border-radius: em($top) em($right) em($bottom) em($left);
+    border-radius: em($top) em($right) em($bottom) em($left);
+}
+
+/* 0.2.0 BREAKPOINTS */
+
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+/* 0.3.0 COLORS */
+
+/* 0.3.1 GREY COLORS */
+
+$white: #FFF;
+$black: #000;
+$dark-bg: #181c28;
+$med-bg: #2d3545;
+$xdark-grey: #111511;
+$dark-grey: #202731;
+$med-grey: #434957;
+$light-grey: #747883;
+
+/* 0.3.2 BRIGHT COLORS */
+
+$light-blue: #6C97B9;
+
+/* 1.0.0 GENERAL */
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
+/* 1.1.0 TYPOGRAPHY */
+
+
+/* 1.2.0 FORM */
+
+/* 1.2.1 INPUTS */
+
+input {
+    width: 100%;
+    padding: em(15);
+    background: $med-grey;
+    border: 1px solid $light-grey;
+    color: $white;  
+
+    &:focus {
+        border-color: $light-blue;
+    }
+}
+
+/* 1.2.2 BUTTONS */
+
+.button {
+    @include border-radius(5, 5, 5, 5);
+    background: transparent;
+    color: $light-grey;
+    border: 2px solid $light-grey;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        border-color: $white;
+        color: $white;
+    }
+
+    i {
+        color: inherit;
+    }
+}
+
+/* 2.0.0 SPECIFIC */
+
+#wrap {
+    @include outer-container;
+    background: $med-bg;
+    @include box-shadow(0, 0, 10, $xdark-grey);
+}
+
+/* 2.1.0 HEADER */
+
+div.header {
+
+    @include span-columns(12);
+    @include omega();
+
+    padding: em(20);
+
+    div.back-button {
+        @include span-columns(2 of 12);
+    }
+
+    span.title {
+
+        @include span-columns(8 of 12);
+
+        @include font-ratio(2);
+        font-weight: bold;
+        padding: 0;
+        text-align: center;
+
+        @include media($tablet) {
+            @include font-ratio(1);
+            padding: em(3) 0;
+        }
+    }
+
+    div.refresh-button {
+        @include span-columns(2 of 12);
+        @include omega();
+
+        .button {
+            float: right;
+        }
+    }
+
+    .button {
+        @include font-ratio(0);
+        font-weight: bold;
+        width: 100%;
+        padding: em(7) 0;
+        max-width: em(100);
+    }
+
+}
+
+/* 2.2.0 STATION LIST */
+
+#station-search {
+    @include span-columns(12);
+    @include omega();
+    padding: em(20);
+}

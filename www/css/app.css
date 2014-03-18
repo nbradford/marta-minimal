@@ -1,30 +1,249 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
+@import url("http://fonts.googleapis.com/css?family=Roboto+Condensed");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 8, ../scss/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
   padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #FFF;
+  background: transparent;
+}
+
+/* line 20, ../scss/_reset.scss */
+html, body {
+  background: #181c28;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 26, ../scss/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 30, ../scss/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, ../scss/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 38, ../scss/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 43, ../scss/_reset.scss */
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+/* line 49, ../scss/_reset.scss */
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 55, ../scss/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 2, ../scss/neat/grid/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+*   ///////////\\\\\\
+*   || TABLE OF CONTENTS ||
+*   \\\\\\////////////
+*   
+*   0.0.0 SCSS VARS
+*   --- 0.1.0 MIXINS
+*   --- --- 0.1.1 STYLES
+*   --- 0.2.0 BREAKPOINTS
+*   --- 0.3.0 COLORS
+*   1.0.0 GENERAL
+*   --- 1.1.0 TYPOGRAPHY
+*   --- 1.2.0 FORMS
+*   --- --- 1.2.1 INPUT
+*   --- --- 1.2.2 BUTTONS
+*   2.0.0 SPECIFIC
+*   --- 2.1.0 HEADER
+*   --- 2.2.0 STATION LIST
+*
+*/
+/* 0.0.0 SCSS VARS */
+/* 0.1.0 MIXINS */
+/* 0.1.1 STYLES */
+/* 0.2.0 BREAKPOINTS */
+/* 0.3.0 COLORS */
+/* 0.3.1 GREY COLORS */
+/* 0.3.2 BRIGHT COLORS */
+/* 1.0.0 GENERAL */
+/* line 78, ../scss/app.scss */
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+/* 1.1.0 TYPOGRAPHY */
+/* 1.2.0 FORM */
+/* 1.2.1 INPUTS */
+/* line 90, ../scss/app.scss */
+input {
+  width: 100%;
+  padding: 0.9375em;
+  background: #434957;
+  border: 1px solid #747883;
+  color: white;
+}
+/* line 97, ../scss/app.scss */
+input:focus {
+  border-color: #6c97b9;
+}
+
+/* 1.2.2 BUTTONS */
+/* line 104, ../scss/app.scss */
+.button {
+  -webkit-border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+  -moz-border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+  border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
+  background: transparent;
+  color: #747883;
+  border: 2px solid #747883;
+  text-align: center;
+}
+/* line 111, ../scss/app.scss */
+.button:hover {
+  cursor: pointer;
+  border-color: white;
+  color: white;
+}
+/* line 117, ../scss/app.scss */
+.button i {
+  color: inherit;
+}
+
+/* 2.0.0 SPECIFIC */
+/* line 124, ../scss/app.scss */
+#wrap {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  background: #2d3545;
+  -webkit-box-shadow: 0em 0em 0.625em #111511;
+  -moz-box-shadow: 0em 0em 0.625em #111511;
+  box-shadow: 0em 0em 0.625em #111511;
+}
+/* line 18, ../scss/bourbon/addons/_clearfix.scss */
+#wrap:before, #wrap:after {
+  content: " ";
+  display: table;
+}
+/* line 23, ../scss/bourbon/addons/_clearfix.scss */
+#wrap:after {
+  clear: both;
+}
+
+/* 2.1.0 HEADER */
+/* line 132, ../scss/app.scss */
+div.header {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-right: 0;
+  padding: 1.25em;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+div.header:last-child {
+  margin-right: 0;
+}
+/* line 139, ../scss/app.scss */
+div.header div.back-button {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+div.header div.back-button:last-child {
+  margin-right: 0;
+}
+/* line 143, ../scss/app.scss */
+div.header span.title {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%;
+  font-size: 2.29068em;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+div.header span.title:last-child {
+  margin-right: 0;
+}
+@media screen and (max-width: 768px) {
+  /* line 143, ../scss/app.scss */
+  div.header span.title {
+    font-size: 1.41575em;
+    padding: 0.1875em 0;
+  }
+}
+/* line 158, ../scss/app.scss */
+div.header div.refresh-button {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%;
+  margin-right: 0;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+div.header div.refresh-button:last-child {
+  margin-right: 0;
+}
+/* line 162, ../scss/app.scss */
+div.header div.refresh-button .button {
+  float: right;
+}
+/* line 167, ../scss/app.scss */
+div.header .button {
+  font-size: 0.875em;
+  font-weight: bold;
+  width: 100%;
+  padding: 0.4375em 0;
+  max-width: 6.25em;
+}
+
+/* 2.2.0 STATION LIST */
+/* line 179, ../scss/app.scss */
+#station-search {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-right: 0;
+  padding: 1.25em;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+#station-search:last-child {
+  margin-right: 0;
 }
