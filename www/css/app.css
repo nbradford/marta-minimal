@@ -389,3 +389,35 @@ div.header .button i {
     padding: 0 1.25em 1.25em 1.25em;
   }
 }
+
+/* line 297, ../scss/app.scss */
+#destination-list {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-right: 0;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+#destination-list:last-child {
+  margin-right: 0;
+}
+/* line 301, ../scss/app.scss */
+#destination-list .direction {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-right: 0;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+#destination-list .direction:last-child {
+  margin-right: 0;
+}
+/* line 305, ../scss/app.scss */
+#destination-list .direction .direction-text {
+  padding: 0.625em 1.25em;
+  width: 100%;
+  text-align: right;
+  font-size: 1.41575em;
+}

@@ -84,7 +84,7 @@ angular.module('martaMin.controllers', [])
 
             $scope.checkRefresh = function() {
                 if ($rootScope.autoRefresh) {
-                    $scope.updateRefresh = window.setInterval($scope.updateTrains, 2500);
+                    $scope.updateRefresh = window.setInterval($scope.updateTrains, 1000);
                 } else {
                     if ($scope.updateRefresh) {
                         clearInterval($scope.updateRefresh);

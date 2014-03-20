@@ -2,4 +2,9 @@
 
 /* Filters */
 
-angular.module('martaMin.filters', []);
+angular.module('martaMin.filters', [])
+    .filter('truncate', [function() {
+        return function(input) {
+            return Math.floor(input);
+        };
+    }]);

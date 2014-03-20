@@ -55,13 +55,64 @@ angular.module('martaMin.services', [])
                                 continue;
                             }
 
-                            station.directions = new DirectionList();
+                            station.newDirections = new DirectionList();
 
                         } else if (!updatedList[stationName]) {
                             continue;
                         }
 
-                        station.directions[train.DIRECTION].trains.push(train);
+                        station.newDirections[train.DIRECTION].trains.push(train);
+                    }
+
+                    for (stationName in scope.stations) {
+                        station = scope.stations[stationName];
+
+                        if (!station.directions) {
+                            if (!station.newDirections) {
+                                station.newDirections = new DirectionList();
+                            }
+
+                            station.directions = station.newDirections;
+                            continue;
+                        }
+
+                        var oldTrain, newTrain, found;
+
+                        for (var direction in station.directions) {
+                            for (var i = 0; i < station.directions[direction].trains.length; i++) {
+                                oldTrain = station.directions[direction].trains[i];
+                                found = false;
+                                for (var j = 0; j < station.newDirections[direction].trains.length; j++) {
+                                    newTrain = station.newDirections[direction].trains[j];
+                                    if (newTrain.DESTINATION == oldTrain.DESTINATION && Math.abs(newTrain.WAITING_SECONDS - oldTrain.WAITING_SECONDS) < 20) {
+                                        found = true;
+                                    }
+                                }
+                                if (!found) {
+                                    if (!oldTrain.failures) {
+                                        oldTrain.failures = 1;
+                                    } else {
+                                        oldTrain.failures += 1;
+                                    }
+
+                                    if (oldTrain.failures < 10) {
+                                        var i = 0;
+                                        for (; i < station.newDirections[direction].trains.length; i++) {
+                                            newTrain = station.newDirections[direction].trains[i];
+                                            if (oldTrain.WAITING_SECONDS < newTrain.WAITING_SECONDS) {
+                                                station.newDirections[direction].trains.splice(i, 0, oldTrain);
+                                                i = station.newDirections[direction].trains.length + 1;
+                                            } 
+                                        }
+                                        if (i == station.newDirections[direction].trains.length) {
+                                            station.newDirections[direction].trains.push(oldTrain);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        station.directions = station.newDirections;
                     }
                 }
             };

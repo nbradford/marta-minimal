@@ -293,3 +293,27 @@ div.header {
         padding: 0 em(20) em(20) em(20);
     }
 }
+
+#destination-list {
+    @include span-columns(12);
+    @include omega();
+
+    .direction {
+        @include span-columns(12 of 12);
+        @include omega();
+
+        .direction-text {
+            padding: em(10) em(20);
+            width: 100%;
+            text-align: right;
+            @include font-ratio(1);
+        }
+
+        .train-list {
+
+            .train-item {
+                
+            }
+        }
+    }
+}
