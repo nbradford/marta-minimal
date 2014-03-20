@@ -77,6 +77,9 @@ table {
 *   --- --- 0.1.1 STYLES
 *   --- 0.2.0 BREAKPOINTS
 *   --- 0.3.0 COLORS
+*   --- --- 0.3.1 GREY COLORS
+*   --- --- 0.3.2 BRIGHT COLORS
+*   --- --- 0.3.3 LINE COLORS
 *   1.0.0 GENERAL
 *   --- 1.1.0 TYPOGRAPHY
 *   --- 1.2.0 FORMS
@@ -94,8 +97,9 @@ table {
 /* 0.3.0 COLORS */
 /* 0.3.1 GREY COLORS */
 /* 0.3.2 BRIGHT COLORS */
+/* 0.3.3 LINE COLORS */
 /* 1.0.0 GENERAL */
-/* line 78, ../scss/app.scss */
+/* line 88, ../scss/app.scss */
 .hidden {
   display: none;
   visibility: hidden;
@@ -104,7 +108,7 @@ table {
 /* 1.1.0 TYPOGRAPHY */
 /* 1.2.0 FORM */
 /* 1.2.1 INPUTS */
-/* line 90, ../scss/app.scss */
+/* line 100, ../scss/app.scss */
 input {
   width: 100%;
   padding: 0.9375em;
@@ -112,13 +116,13 @@ input {
   border: 1px solid #747883;
   color: white;
 }
-/* line 97, ../scss/app.scss */
+/* line 107, ../scss/app.scss */
 input:focus {
   border-color: #6c97b9;
 }
 
 /* 1.2.2 BUTTONS */
-/* line 104, ../scss/app.scss */
+/* line 114, ../scss/app.scss */
 .button {
   -webkit-border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
   -moz-border-radius: 0.3125em 0.3125em 0.3125em 0.3125em;
@@ -128,19 +132,19 @@ input:focus {
   border: 2px solid #747883;
   text-align: center;
 }
-/* line 111, ../scss/app.scss */
+/* line 121, ../scss/app.scss */
 .button:hover {
   cursor: pointer;
   border-color: white;
   color: white;
 }
-/* line 117, ../scss/app.scss */
+/* line 127, ../scss/app.scss */
 .button i {
   color: inherit;
 }
 
 /* 2.0.0 SPECIFIC */
-/* line 124, ../scss/app.scss */
+/* line 134, ../scss/app.scss */
 #wrap {
   *zoom: 1;
   max-width: 68em;
@@ -162,7 +166,7 @@ input:focus {
 }
 
 /* 2.1.0 HEADER */
-/* line 132, ../scss/app.scss */
+/* line 142, ../scss/app.scss */
 div.header {
   float: left;
   display: block;
@@ -175,7 +179,7 @@ div.header {
 div.header:last-child {
   margin-right: 0;
 }
-/* line 139, ../scss/app.scss */
+/* line 149, ../scss/app.scss */
 div.header div.back-button {
   float: left;
   display: block;
@@ -186,7 +190,7 @@ div.header div.back-button {
 div.header div.back-button:last-child {
   margin-right: 0;
 }
-/* line 143, ../scss/app.scss */
+/* line 153, ../scss/app.scss */
 div.header span.title {
   float: left;
   display: block;
@@ -202,13 +206,13 @@ div.header span.title:last-child {
   margin-right: 0;
 }
 @media screen and (max-width: 768px) {
-  /* line 143, ../scss/app.scss */
+  /* line 153, ../scss/app.scss */
   div.header span.title {
     font-size: 1.41575em;
     padding: 0.1875em 0;
   }
 }
-/* line 158, ../scss/app.scss */
+/* line 168, ../scss/app.scss */
 div.header div.refresh-button {
   float: left;
   display: block;
@@ -220,11 +224,11 @@ div.header div.refresh-button {
 div.header div.refresh-button:last-child {
   margin-right: 0;
 }
-/* line 162, ../scss/app.scss */
+/* line 172, ../scss/app.scss */
 div.header div.refresh-button .button {
   float: right;
 }
-/* line 167, ../scss/app.scss */
+/* line 177, ../scss/app.scss */
 div.header .button {
   font-size: 0.875em;
   font-weight: bold;
@@ -234,7 +238,7 @@ div.header .button {
 }
 
 /* 2.2.0 STATION LIST */
-/* line 179, ../scss/app.scss */
+/* line 189, ../scss/app.scss */
 #station-search {
   float: left;
   display: block;
@@ -246,4 +250,72 @@ div.header .button {
 /* line 40, ../scss/neat/grid/_span-columns.scss */
 #station-search:last-child {
   margin-right: 0;
+}
+
+/* line 194, ../scss/app.scss */
+#station-list {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  margin-right: 0;
+}
+/* line 40, ../scss/neat/grid/_span-columns.scss */
+#station-list:last-child {
+  margin-right: 0;
+}
+/* line 198, ../scss/app.scss */
+#station-list .station-item {
+  overflow: auto;
+  display: block;
+  padding: 0.625em 0;
+  border-bottom: 1px dotted #747883;
+  text-decoration: none;
+}
+/* line 205, ../scss/app.scss */
+#station-list .station-item:hover {
+  background: #202731;
+}
+/* line 209, ../scss/app.scss */
+#station-list .station-item .direction-list {
+  float: right;
+}
+/* line 212, ../scss/app.scss */
+#station-list .station-item .direction-list .direction-text {
+  padding: 0.125em 1.25em 0.125em 0;
+  text-align: right;
+  border-right: 0.1875em solid #747883;
+}
+/* line 217, ../scss/app.scss */
+#station-list .station-item .direction-list .direction-text.RED {
+  border-color: #f22a2a;
+}
+/* line 221, ../scss/app.scss */
+#station-list .station-item .direction-list .direction-text.GREEN {
+  border-color: #38d943;
+}
+/* line 225, ../scss/app.scss */
+#station-list .station-item .direction-list .direction-text.BLUE {
+  border-color: #3aa1dc;
+}
+/* line 229, ../scss/app.scss */
+#station-list .station-item .direction-list .direction-text.GOLD {
+  border-color: #d4d22a;
+}
+/* line 233, ../scss/app.scss */
+#station-list .station-item .direction-list .direction-text span.direction-name {
+  text-transform: uppercase;
+  font-size: 80%;
+  color: #747883;
+}
+/* line 241, ../scss/app.scss */
+#station-list .station-item .station-name {
+  display: block;
+  padding: 0.125em 0 0 1.4375em;
+}
+/* line 245, ../scss/app.scss */
+#station-list .station-item .station-name i {
+  font-size: 80%;
+  color: #747883;
+  padding-left: 1.25em;
 }

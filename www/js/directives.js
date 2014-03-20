@@ -10,8 +10,7 @@ angular.module('martaMin.directives', [])
                 restrict: 'E',
                 templateUrl: 'partials/station-item.html',
                 scope: {
-                    name: '=',
-                    data: '='
+                    station: '='
                 },
             };
         }]);

@@ -12,6 +12,9 @@
 *   --- --- 0.1.1 STYLES
 *   --- 0.2.0 BREAKPOINTS
 *   --- 0.3.0 COLORS
+*   --- --- 0.3.1 GREY COLORS
+*   --- --- 0.3.2 BRIGHT COLORS
+*   --- --- 0.3.3 LINE COLORS
 *   1.0.0 GENERAL
 *   --- 1.1.0 TYPOGRAPHY
 *   --- 1.2.0 FORMS
@@ -72,6 +75,13 @@ $light-grey: #747883;
 /* 0.3.2 BRIGHT COLORS */
 
 $light-blue: #6C97B9;
+
+/* 0.3.3 LINE COLORS */
+
+$line-gold: #D4D22A;
+$line-red: #F22A2A;
+$line-green: #38D943;
+$line-blue: #3AA1DC;
 
 /* 1.0.0 GENERAL */
 
@@ -180,4 +190,63 @@ div.header {
     @include span-columns(12);
     @include omega();
     padding: em(20);
+}
+#station-list {
+    @include span-columns(12);
+    @include omega();
+
+    .station-item {
+        overflow: auto;
+        display: block;
+        padding: em(10) 0;
+        border-bottom: 1px dotted $light-grey;
+        text-decoration: none;
+
+        &:hover {
+            background: $dark-grey;
+        }
+
+        .direction-list {
+            float: right;
+
+            .direction-text {
+                padding: em(2) em(20) em(2) 0;
+                text-align: right;
+                border-right: em(3) solid $light-grey;
+
+                &.RED {
+                    border-color: $line-red;
+                }
+
+                &.GREEN {
+                    border-color: $line-green;
+                }
+
+                &.BLUE {
+                    border-color: $line-blue;
+                }
+
+                &.GOLD {
+                    border-color: $line-gold;
+                }
+
+                span.direction-name {
+                    text-transform: uppercase;
+                    font-size: 80%;
+                    color: $light-grey;
+                }
+            }
+        }
+
+        .station-name {
+            display: block;
+            padding: em(2) 0 0 em(23);
+
+            i {
+                font-size: 80%;
+                color: $light-grey;
+                padding-left: em(20);
+            }
+        }
+    }
 }

@@ -3,6 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('martaMin', [
   'ngRoute',
+  'martaMin.constants',
   'martaMin.filters',
   'martaMin.services',
   'martaMin.directives',

@@ -1,7 +1,10 @@
 <div id="station-search">
-    <input type="text" placeholder="Search Stations">
+    <input type="text" placeholder="Search Stations" ng-model="search">
 </div>
-<div ng-repeat="(name, data) in stations">
-    <!-- <station-item name="name" data="data"></station-item> -->
+<div id="station-list">
+    <div ng-repeat="station in stationList | orderBy:'distance' | filter:{name: search}">
+        <a class="station-item" href="#/s/{{station.slug}}">
+            <station-item station="station"></station-item>
+        </a>
+    </div>
 </div>
-{{data}}
