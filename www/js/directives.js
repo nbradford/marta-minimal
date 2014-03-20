@@ -3,14 +3,4 @@
 /* Directives */
 
 
-angular.module('martaMin.directives', [])
-    .directive('stationItem', [
-        function() {
-            return {
-                restrict: 'E',
-                templateUrl: 'partials/station-item.html',
-                scope: {
-                    station: '='
-                },
-            };
-        }]);
+angular.module('martaMin.directives', []);

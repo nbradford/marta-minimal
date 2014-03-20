@@ -5,8 +5,13 @@
 angular.module('martaMin.controllers', [])
     .controller('HeaderCtrl', ['$scope', '$rootScope', '$location',
         function($scope, $rootScope, $location) {
-            $scope.isRoot = $location.path().split('/')[1] == "";
-            $rootScope.autoRefresh = true;
+
+            $scope.pathBase = '';
+            $scope.$on('$routeChangeSuccess', function() {
+                $scope.pathBase = $location.path().split('/')[1];
+            });
+
+            $rootScope.autoRefresh = false;
 
             $scope.toggleRefresh = function() {
                 $rootScope.autoRefresh = !$rootScope.autoRefresh;
@@ -18,14 +23,15 @@ angular.module('martaMin.controllers', [])
             $scope.stationList = [];
 
             $scope.convertStationsToList = function() {
-                var found;
+                var found, oldSlug;
                 for (var station in $scope.stations) {
                     found = false;
                     for (var i = 0; i < $scope.stationList.length; i++) {
                         if ($scope.stationList[i].name == station) {
+                            oldSlug = $scope.stationList[i].slug;
                             $scope.stationList[i] = $scope.stations[station];
                             $scope.stationList[i].name = station;
-                            $scope.stationList[i].slug = slug.create(station);
+                            $scope.stationList[i].slug = oldSlug;
                             found = true;
                             break;
                         }
@@ -62,4 +68,38 @@ angular.module('martaMin.controllers', [])
             });
 
             $scope.updateTrains();
+        }])
+    .controller('StationCtrl', ['$scope', '$rootScope', '$routeParams', 'marta', 'stations', 'slug',
+        function($scope, $rootScope, $routeParams, marta, stations, slug) {
+            $scope.stations = stations.list;
+            $scope.stationName = slug.retrieve($routeParams.station);
+            $scope.station = $scope.stations[$scope.stationName];
+            $scope.directions = stations.directions;
+
+            $scope.updateTrains = function() {
+                marta.getTrains(function(trains) {
+                    marta.updateTrains($scope, trains);
+                });
+            };
+
+            $scope.checkRefresh = function() {
+                if ($rootScope.autoRefresh) {
+                    $scope.updateRefresh = window.setInterval($scope.updateTrains, 2500);
+                } else {
+                    if ($scope.updateRefresh) {
+                        clearInterval($scope.updateRefresh);
+                    }
+                    $scope.updateRefresh = false;
+                }
+            };
+
+            $rootScope.$watch('autoRefresh', function() {
+                $scope.checkRefresh();
+            });
+
+            $scope.updateTrains();
+        }])
+    .controller('MapCtrl', ['$scope', 'position',
+        function($scope, position) {
+
         }]);

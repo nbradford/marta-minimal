@@ -56,16 +56,18 @@ a=a.angular||(a.angular={});a.$$minErr=a.$$minErr||d;return a.module||(a.module=
     <div class="header" ng-controller="HeaderCtrl">
 
       <div class="back-button">
-        <a class="button" ng-class="isRoot ? 'hidden' : ''">
-          <i class="fa fa-arrow-left"></i> {{isRoot}}
+        <a class="button" ng-class="pathBase == '' ? 'hidden' : ''" href="#">
+          <i class="fa fa-arrow-left"></i> Back
         </a>
-        <span>&nbsp</span>
+        <a class="button" ng-class="pathBase == '' ? '' : 'hidden'" href="#/map">
+          <i class="fa fa-map-marker"></i> Map
+        </a>
       </div>
 
       <span class="title">marta.min</span>
 
       <div class="refresh-button">
-        <a class="button" ng-click="toggleRefresh()">
+        <a class="button" ng-click="toggleRefresh()" ng-class="autoRefresh ? 'active' : ''">
           <i class="fa fa-refresh"></i> {{autoRefresh ? 'Auto' : 'Off'}}
         </a>
       </div>

@@ -5,10 +5,13 @@
 // Demonstrate how to register services
 // In this case it is a simple value service.
 angular.module('martaMin.services', [])
-    .service('marta', ['$http', 'stations',
-        function($http, stations) {
+    .service('marta', ['$http', '$rootScope', 'stations',
+        function($http, $rootScope, stations) {
+            
             var baseUrl = 'http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=';
-            var apikey = 'api-key';
+            var apikey = 'apikey';
+
+            var errorRate = 0;
 
             function DirectionList() {
                 for (var direction in stations.directions) {
@@ -24,6 +27,14 @@ angular.module('martaMin.services', [])
                     return $http.get(baseUrl + apikey)
                                 .success(function(data) {
                                     callback(data);
+                                })
+                                .error(function() {
+                                    errorRate += 1;
+                                    if (errorRate > 3) {
+                                        $rootScope.autoRefresh = false;
+                                        errorRate = 0;
+                                        alert('Connection to Marta could not be established!');
+                                    }
                                 });
                 },
                 updateTrains: function(scope, trains) {
@@ -91,8 +102,12 @@ angular.module('martaMin.services', [])
                 create: function(text) {
                     return text
                         .toLowerCase()
-                        .replace(/ /g,'-')
-                        .replace(/[^\w-]+/g,'');
+                        .replace(/ /g,'-');
+                },
+                retrieve: function(slug) {
+                    return slug
+                        .replace(/-/g,' ')
+                        .toUpperCase();
                 }
             };
         }]);

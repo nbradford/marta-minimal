@@ -14,8 +14,16 @@ config(['$routeProvider', function($routeProvider) {
     .when('/', {
         templateUrl: 'partials/list.html',
         controller: 'ListCtrl'
-    });
-    $routeProvider.otherwise({
+    })
+    .when('/s/:station', {
+        templateUrl: 'partials/station.html',
+        controller: 'StationCtrl'
+    })
+    .when('/map', {
+        templateUrl: 'partials/map.html',
+        controller: 'MapCtrl'
+    })
+    .otherwise({
         redirectTo: '/'
     });
 }]);

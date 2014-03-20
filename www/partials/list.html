@@ -4,7 +4,16 @@
 <div id="station-list">
     <div ng-repeat="station in stationList | orderBy:'distance' | filter:{name: search}">
         <a class="station-item" href="#/s/{{station.slug}}">
-            <station-item station="station"></station-item>
+            <div class="direction-list">
+                <div class="direction" ng-repeat="(direction, data) in station.directions">
+                    <div class="direction-text" ng-class="data.trains.length > 0 ? data.trains[0].LINE : 'hidden'">
+                        <span class="direction-name">{{data.display}}</span> {{data.trains.length > 0 ? data.trains[0].WAITING_TIME : 'None'}}
+                    </div>
+                </div>
+            </div>
+            <span class="station-name">
+                {{station.name}}
+            </span>
         </a>
     </div>
 </div>

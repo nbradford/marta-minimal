@@ -1,0 +1,15 @@
+<div id="station-name">
+    {{stationName}}
+</div>
+<div id="destination-search">
+    <input type="text" placeholder="Search Destinations" ng-model="search">
+</div>
+<div id="destination-list">
+    <div class="direction" ng-repeat="(direction, data) in station.directions">
+        <div class="direction-text" ng-class="data.trains.length < 1 ? 'hidden' : ''">
+            <div class="direction-name">
+                {{directions[direction]}}bound
+            </div>
+        </div>
+    </div>
+</div>

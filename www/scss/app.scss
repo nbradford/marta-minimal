@@ -23,6 +23,7 @@
 *   2.0.0 SPECIFIC
 *   --- 2.1.0 HEADER
 *   --- 2.2.0 STATION LIST
+*   --- 2.3.0 STATION
 *
 */
 
@@ -75,6 +76,7 @@ $light-grey: #747883;
 /* 0.3.2 BRIGHT COLORS */
 
 $light-blue: #6C97B9;
+$green: #38D943;
 
 /* 0.3.3 LINE COLORS */
 
@@ -86,7 +88,7 @@ $line-blue: #3AA1DC;
 /* 1.0.0 GENERAL */
 
 .hidden {
-    display: none;
+    display: none !important;
     visibility: hidden;
 }
 
@@ -117,6 +119,8 @@ input {
     color: $light-grey;
     border: 2px solid $light-grey;
     text-align: center;
+    display: block;
+    text-decoration: none;
 
     &:hover {
         cursor: pointer;
@@ -143,7 +147,7 @@ div.header {
 
     @include span-columns(12);
     @include omega();
-
+    background: $dark-grey;
     padding: em(20);
 
     div.back-button {
@@ -171,6 +175,11 @@ div.header {
 
         .button {
             float: right;
+
+            &.active {
+                color: $green;
+                border-color: $green;
+            }
         }
     }
 
@@ -178,8 +187,16 @@ div.header {
         @include font-ratio(0);
         font-weight: bold;
         width: 100%;
-        padding: em(7) 0;
+        padding: em(12) 0;
         max-width: em(100);
+
+        i {
+            padding-right: em(5);
+        }
+
+        @include media($tablet) {
+            padding: em(7) 0;
+        }
     }
 
 }
@@ -191,6 +208,7 @@ div.header {
     @include omega();
     padding: em(20);
 }
+
 #station-list {
     @include span-columns(12);
     @include omega();
@@ -199,7 +217,7 @@ div.header {
         overflow: auto;
         display: block;
         padding: em(10) 0;
-        border-bottom: 1px dotted $light-grey;
+        border-top: 1px dotted $light-grey;
         text-decoration: none;
 
         &:hover {
@@ -248,5 +266,30 @@ div.header {
                 padding-left: em(20);
             }
         }
+    }
+}
+
+/* 2.2.1 STATION */
+
+#station-name {
+    @include span-columns(6);
+    @include font-ratio(1);
+    padding: em(25) em(20);
+    font-weight: bold;
+
+    @include media($tablet) {
+        @include span-columns(12);
+        padding: em(10) em(20);
+    }
+}
+
+#destination-search {
+    @include span-columns(6);
+    @include omega();
+    padding: em(20);
+
+    @include media($tablet) {
+        width: 100%;
+        padding: 0 em(20) em(20) em(20);
     }
 }
