@@ -330,7 +330,7 @@ div.header .button i {
 /* line 263, ../scss/app.scss */
 #station-list .station-item .station-name {
   display: block;
-  padding: 0.125em 0 0 1.4375em;
+  padding: 0.125em 0 0 0.9375em;
   font-size: 1.41575em;
 }
 /* line 268, ../scss/app.scss */
