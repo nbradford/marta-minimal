@@ -121,16 +121,6 @@ angular.module('martaMin.services', [])
         }])
     .service('position', [
         function() {
-            var position = false;
-
-            if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(function(pos) {
-                    position = pos;
-                    position.isNew = true;
-                });
-            } else {
-                console.log("geolocation not supported");
-            }
 
             function calculateDistance(station) {
                 var latDif = position.coords.latitude - station.location.latitude;

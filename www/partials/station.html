@@ -18,8 +18,8 @@
                 </span>
                 <div class="train-time">
                     <span class="waiting-time">{{train.WAITING_TIME}}</span>
-                    <span class="seconds-left" ng-class="train.WAITING_SECONDS < 0 ? 'hidden' : ''">
-                        {{(train.WAITING_SECONDS % 60) | truncate}} sec
+                    <span class="seconds-left" ng-class="train.WAITING_SECONDS < 30 ? 'hidden' : ''">
+                        {{((train.WAITING_SECONDS - (-30)) % 60) | truncate}} sec
                     </span>
                 </div>
             </div>
