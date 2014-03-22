@@ -203,6 +203,24 @@ div.header {
 
 /* 2.2.0 STATION LIST */
 
+@mixin line-colors() {
+    &.RED {
+        border-color: $line-red;
+    }
+
+    &.GREEN {
+        border-color: $line-green;
+    }
+
+    &.BLUE {
+        border-color: $line-blue;
+    }
+
+    &.GOLD {
+        border-color: $line-gold;
+    }
+}
+
 #station-search {
     @include span-columns(12);
     @include omega();
@@ -232,21 +250,7 @@ div.header {
                 text-align: right;
                 border-right: em(3) solid $light-grey;
 
-                &.RED {
-                    border-color: $line-red;
-                }
-
-                &.GREEN {
-                    border-color: $line-green;
-                }
-
-                &.BLUE {
-                    border-color: $line-blue;
-                }
-
-                &.GOLD {
-                    border-color: $line-gold;
-                }
+                @include line-colors();
 
                 span.direction-name {
                     text-transform: uppercase;
@@ -259,6 +263,7 @@ div.header {
         .station-name {
             display: block;
             padding: em(2) 0 0 em(23);
+            @include font-ratio(1);
 
             i {
                 font-size: 80%;
@@ -273,12 +278,12 @@ div.header {
 
 #station-name {
     @include span-columns(6);
-    @include font-ratio(1);
-    padding: em(25) em(20);
+    @include font-ratio(2);
+    padding: em(10) em(20);
     font-weight: bold;
 
     @include media($tablet) {
-        @include span-columns(12);
+        width: 100%;
         padding: em(10) em(20);
     }
 }
@@ -307,12 +312,34 @@ div.header {
             width: 100%;
             text-align: right;
             @include font-ratio(1);
+            border-top: 1px dotted $light-grey;
         }
 
         .train-list {
 
             .train-item {
-                
+                width: 100%;
+                padding: em(20) em(25);
+                text-transform: uppercase;
+                border-left: em(5) solid $light-grey;
+
+                @include line-colors();
+
+                border-top: 1px dotted $light-grey;
+                border-top-color: $light-grey !important;
+
+                .destination-name {
+                    @include font-ratio(1);
+                }
+
+                .train-time {
+                    float: right;
+                    padding: em(5);
+
+                    .seconds-left {
+                        color: $light-grey
+                    }
+                }
             }
         }
     }

@@ -257,7 +257,7 @@ div.header .button i {
 }
 
 /* 2.2.0 STATION LIST */
-/* line 206, ../scss/app.scss */
+/* line 224, ../scss/app.scss */
 #station-search {
   float: left;
   display: block;
@@ -271,7 +271,7 @@ div.header .button i {
   margin-right: 0;
 }
 
-/* line 212, ../scss/app.scss */
+/* line 230, ../scss/app.scss */
 #station-list {
   float: left;
   display: block;
@@ -283,7 +283,7 @@ div.header .button i {
 #station-list:last-child {
   margin-right: 0;
 }
-/* line 216, ../scss/app.scss */
+/* line 234, ../scss/app.scss */
 #station-list .station-item {
   overflow: auto;
   display: block;
@@ -291,48 +291,49 @@ div.header .button i {
   border-top: 1px dotted #747883;
   text-decoration: none;
 }
-/* line 223, ../scss/app.scss */
+/* line 241, ../scss/app.scss */
 #station-list .station-item:hover {
   background: #202731;
 }
-/* line 227, ../scss/app.scss */
+/* line 245, ../scss/app.scss */
 #station-list .station-item .direction-list {
   float: right;
 }
-/* line 230, ../scss/app.scss */
+/* line 248, ../scss/app.scss */
 #station-list .station-item .direction-list .direction-text {
   padding: 0.125em 1.25em 0.125em 0;
   text-align: right;
   border-right: 0.1875em solid #747883;
 }
-/* line 235, ../scss/app.scss */
+/* line 207, ../scss/app.scss */
 #station-list .station-item .direction-list .direction-text.RED {
   border-color: #f22a2a;
 }
-/* line 239, ../scss/app.scss */
+/* line 211, ../scss/app.scss */
 #station-list .station-item .direction-list .direction-text.GREEN {
   border-color: #38d943;
 }
-/* line 243, ../scss/app.scss */
+/* line 215, ../scss/app.scss */
 #station-list .station-item .direction-list .direction-text.BLUE {
   border-color: #3aa1dc;
 }
-/* line 247, ../scss/app.scss */
+/* line 219, ../scss/app.scss */
 #station-list .station-item .direction-list .direction-text.GOLD {
   border-color: #d4d22a;
 }
-/* line 251, ../scss/app.scss */
+/* line 255, ../scss/app.scss */
 #station-list .station-item .direction-list .direction-text span.direction-name {
   text-transform: uppercase;
   font-size: 80%;
   color: #747883;
 }
-/* line 259, ../scss/app.scss */
+/* line 263, ../scss/app.scss */
 #station-list .station-item .station-name {
   display: block;
   padding: 0.125em 0 0 1.4375em;
+  font-size: 1.41575em;
 }
-/* line 263, ../scss/app.scss */
+/* line 268, ../scss/app.scss */
 #station-list .station-item .station-name i {
   font-size: 80%;
   color: #747883;
@@ -340,14 +341,14 @@ div.header .button i {
 }
 
 /* 2.2.1 STATION */
-/* line 274, ../scss/app.scss */
+/* line 279, ../scss/app.scss */
 #station-name {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 48.82117%;
-  font-size: 1.41575em;
-  padding: 1.5625em 1.25em;
+  font-size: 2.29068em;
+  padding: 0.625em 1.25em;
   font-weight: bold;
 }
 /* line 40, ../scss/neat/grid/_span-columns.scss */
@@ -355,21 +356,14 @@ div.header .button i {
   margin-right: 0;
 }
 @media screen and (max-width: 768px) {
-  /* line 274, ../scss/app.scss */
+  /* line 279, ../scss/app.scss */
   #station-name {
-    float: left;
-    display: block;
-    margin-right: 3.57866%;
-    width: 151.78933%;
+    width: 100%;
     padding: 0.625em 1.25em;
-  }
-  /* line 40, ../scss/neat/grid/_span-columns.scss */
-  #station-name:last-child {
-    margin-right: 0;
   }
 }
 
-/* line 286, ../scss/app.scss */
+/* line 291, ../scss/app.scss */
 #destination-search {
   float: left;
   display: block;
@@ -383,14 +377,14 @@ div.header .button i {
   margin-right: 0;
 }
 @media screen and (max-width: 768px) {
-  /* line 286, ../scss/app.scss */
+  /* line 291, ../scss/app.scss */
   #destination-search {
     width: 100%;
     padding: 0 1.25em 1.25em 1.25em;
   }
 }
 
-/* line 297, ../scss/app.scss */
+/* line 302, ../scss/app.scss */
 #destination-list {
   float: left;
   display: block;
@@ -402,7 +396,7 @@ div.header .button i {
 #destination-list:last-child {
   margin-right: 0;
 }
-/* line 301, ../scss/app.scss */
+/* line 306, ../scss/app.scss */
 #destination-list .direction {
   float: left;
   display: block;
@@ -414,10 +408,49 @@ div.header .button i {
 #destination-list .direction:last-child {
   margin-right: 0;
 }
-/* line 305, ../scss/app.scss */
+/* line 310, ../scss/app.scss */
 #destination-list .direction .direction-text {
   padding: 0.625em 1.25em;
   width: 100%;
   text-align: right;
   font-size: 1.41575em;
+  border-top: 1px dotted #747883;
+}
+/* line 320, ../scss/app.scss */
+#destination-list .direction .train-list .train-item {
+  width: 100%;
+  padding: 1.25em 1.5625em;
+  text-transform: uppercase;
+  border-left: 0.3125em solid #747883;
+  border-top: 1px dotted #747883;
+  border-top-color: #747883 !important;
+}
+/* line 207, ../scss/app.scss */
+#destination-list .direction .train-list .train-item.RED {
+  border-color: #f22a2a;
+}
+/* line 211, ../scss/app.scss */
+#destination-list .direction .train-list .train-item.GREEN {
+  border-color: #38d943;
+}
+/* line 215, ../scss/app.scss */
+#destination-list .direction .train-list .train-item.BLUE {
+  border-color: #3aa1dc;
+}
+/* line 219, ../scss/app.scss */
+#destination-list .direction .train-list .train-item.GOLD {
+  border-color: #d4d22a;
+}
+/* line 331, ../scss/app.scss */
+#destination-list .direction .train-list .train-item .destination-name {
+  font-size: 1.41575em;
+}
+/* line 335, ../scss/app.scss */
+#destination-list .direction .train-list .train-item .train-time {
+  float: right;
+  padding: 0.3125em;
+}
+/* line 339, ../scss/app.scss */
+#destination-list .direction .train-list .train-item .train-time .seconds-left {
+  color: #747883;
 }

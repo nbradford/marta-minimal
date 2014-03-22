@@ -9,7 +9,7 @@ angular.module('martaMin.services', [])
         function($http, $rootScope, stations) {
             
             var baseUrl = 'http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=';
-            var apikey = 'apikey';
+            var apikey = 'efe76b08-641c-4b0f-9335-3add9f1ac7b2';
 
             var errorRate = 0;
 
@@ -81,25 +81,27 @@ angular.module('martaMin.services', [])
                         for (var direction in station.directions) {
                             for (var i = 0; i < station.directions[direction].trains.length; i++) {
                                 oldTrain = station.directions[direction].trains[i];
-                                found = false;
-                                for (var j = 0; j < station.newDirections[direction].trains.length; j++) {
-                                    newTrain = station.newDirections[direction].trains[j];
-                                    if (newTrain.DESTINATION == oldTrain.DESTINATION && Math.abs(newTrain.WAITING_SECONDS - oldTrain.WAITING_SECONDS) < 20) {
-                                        found = true;
+                                if ((!oldTrain.failures || oldTrain.failures < 10) && oldTrain.WAITING_SECONDS > -30) {
+                                    found = false;
+                                    for (var j = 0; j < station.newDirections[direction].trains.length; j++) {
+                                        newTrain = station.newDirections[direction].trains[j];
+                                        if (newTrain.DESTINATION == oldTrain.DESTINATION && 
+                                            newTrain.LINE == oldTrain.LINE &&
+                                            Math.abs(newTrain.WAITING_SECONDS - oldTrain.WAITING_SECONDS) < 20) {
+                                            found = true;
+                                        }
                                     }
-                                }
-                                if (!found) {
-                                    if (!oldTrain.failures) {
-                                        oldTrain.failures = 1;
-                                    } else {
-                                        oldTrain.failures += 1;
-                                    }
+                                    if (!found) {
+                                        if (!oldTrain.failures) {
+                                            oldTrain.failures = 1;
+                                        } else {
+                                            oldTrain.failures += 1;
+                                        }
 
-                                    if (oldTrain.failures < 10) {
                                         var i = 0;
                                         for (; i < station.newDirections[direction].trains.length; i++) {
                                             newTrain = station.newDirections[direction].trains[i];
-                                            if (oldTrain.WAITING_SECONDS < newTrain.WAITING_SECONDS) {
+                                            if (oldTrain.WAITING_SECONDS - newTrain.WAITING_SECONDS < 0) {
                                                 station.newDirections[direction].trains.splice(i, 0, oldTrain);
                                                 i = station.newDirections[direction].trains.length + 1;
                                             } 

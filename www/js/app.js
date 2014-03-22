@@ -15,13 +15,9 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/list.html',
         controller: 'ListCtrl'
     })
-    .when('/s/:station', {
+    .when('/:station', {
         templateUrl: 'partials/station.html',
         controller: 'StationCtrl'
-    })
-    .when('/map', {
-        templateUrl: 'partials/map.html',
-        controller: 'MapCtrl'
     })
     .otherwise({
         redirectTo: '/'

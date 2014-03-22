@@ -11,7 +11,7 @@ angular.module('martaMin.controllers', [])
                 $scope.pathBase = $location.path().split('/')[1];
             });
 
-            $rootScope.autoRefresh = false;
+            $rootScope.autoRefresh = true;
 
             $scope.toggleRefresh = function() {
                 $rootScope.autoRefresh = !$rootScope.autoRefresh;

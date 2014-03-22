@@ -3,7 +3,7 @@
 </div>
 <div id="station-list">
     <div ng-repeat="station in stationList | orderBy:'distance' | filter:{name: search}">
-        <a class="station-item" href="#/s/{{station.slug}}">
+        <a class="station-item" href="#/{{station.slug}}">
             <div class="direction-list">
                 <div class="direction" ng-repeat="(direction, data) in station.directions">
                     <div class="direction-text" ng-class="data.trains.length > 0 ? data.trains[0].LINE : 'hidden'">

@@ -11,14 +11,16 @@
                 {{directions[direction]}}bound
             </div>
         </div>
-        <div class="train-list" ng-repeat="train in data.trains">
-            <div class="train-item">
-                <div class="destination-name">
+        <div class="train-list" ng-repeat="train in data.trains | filter:{DESTINATION: search}">
+            <div class="train-item" ng-class="train.LINE">
+                <span class="destination-name">
                     {{train.DESTINATION}}
-                </div>
+                </span>
                 <div class="train-time">
                     <span class="waiting-time">{{train.WAITING_TIME}}</span>
-                    <span class="seconds left">{{(train.WAITING_SECONDS % 60) | truncate}}</span>
+                    <span class="seconds-left" ng-class="train.WAITING_SECONDS < 0 ? 'hidden' : ''">
+                        {{(train.WAITING_SECONDS % 60) | truncate}} sec
+                    </span>
                 </div>
             </div>
         </div>
