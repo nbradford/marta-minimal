@@ -6,7 +6,6 @@ var $phonegap = {
     },
     onDeviceReady: function() {
         this.isReady = true;
-        alert("DEVICE READY");
         queue.forEach(function(fn) {
             fn.func.apply(null, fn.args);
         });
