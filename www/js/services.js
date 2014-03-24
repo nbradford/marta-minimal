@@ -121,29 +121,41 @@ angular.module('martaMin.services', [])
         }])
     .service('position', [
         function() {
-            var position = false;
 
-            if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(function(pos) {
-                    position = pos;
-                    position.isNew = true;
-                });
-            } else {
-                console.log("geolocation not supported");
+            var position = {
+                isNew: true,
+                location: false,
+                updateLocation: function(location) {
+                    this.location = location;
+                    this.isNew = true;
+                }
+            };
+
+            function getPosition(position) {
+                if (navigator.geolocation) {
+                    navigator.geolocation.watchPosition(function(location) {
+                        position.updateLocation.apply(position, [location]);
+                    });
+                } else {
+                    console.log("geolocation not supported");
+                }
             }
 
-            function calculateDistance(station) {
-                var latDif = position.coords.latitude - station.location.latitude;
-                var lngDif = position.coords.longitude - station.location.longitude;
+            function calculateDistance(station, position) {
+                var latDif = position.location.coords.latitude - station.location.latitude;
+                var lngDif = position.location.coords.longitude - station.location.longitude;
                 return Math.sqrt(Math.pow(latDif, 2) + Math.pow(lngDif, 2));
             }
 
+            $phonegap.doWhenReady(getPosition, [position]);
+
             return {
                 updateDistances: function(scope) {
-                    if (position && position.isNew) {
+                    if (position.location && position.isNew) {
+                        position.isNew = false;
                         for (var stationName in scope.stations) {
                             var station = scope.stations[stationName];
-                            station.distance = calculateDistance(station);
+                            station.distance = calculateDistance(station, position);
                         }
                     }
                 }
