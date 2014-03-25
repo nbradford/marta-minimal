@@ -2,15 +2,21 @@ var $phonegap = {
     queue: [],
     isReady: false,
     init: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        var self = this;
+        document.addEventListener('deviceready', function() {
+            self.onDeviceReady.call(self);
+        }, false);
     },
     onDeviceReady: function() {
         this.isReady = true;
-        queue.forEach(function(fn) {
+        this.queue.forEach(function(fn) {
             fn.func.apply(null, fn.args);
         });
     },
     doWhenReady: function(fn, args) {
+        if (!args) {
+            args = [];
+        }
         if (this.isReady) {
             fn.apply(null, args);
         } else {

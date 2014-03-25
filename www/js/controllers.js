@@ -12,10 +12,23 @@ angular.module('martaMin.controllers', [])
             });
 
             $rootScope.autoRefresh = true;
+            $scope.wasRefreshing = true;
 
             $scope.toggleRefresh = function() {
                 $rootScope.autoRefresh = !$rootScope.autoRefresh;
+                $scope.wasRefreshing = $rootScope.autoRefresh ? true : false;
             };
+
+            $scope.phonegapEvents = {
+                bind: function() {
+                    document.addEventListener('pause', $scope.phonegapEvents.onPause, false);
+                    document.addEventListener('resume', $scope.phonegapEvents.onResume, false);
+                },
+                onPause: function() { $rootScope.autoRefresh = false; },
+                onResume: function() { $rootScope.autoRefresh = $scope.wasRefreshing ? true : false; }
+            };
+
+            $phonegap.doWhenReady($scope.phonegapEvents.bind, []);
         }])
     .controller('ListCtrl', ['$scope', '$rootScope', 'marta', 'position', 'stations', 'slug',
         function($scope, $rootScope, marta, position, stations, slug) {
