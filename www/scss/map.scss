@@ -1,0 +1,400 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+$line-gold: #D4D22A;
+$line-red: #F22A2A;
+$line-green: #38D943;
+$line-blue: #3AA1DC;
+
+$light-grey: #AAA;
+$med-bg: #2d3545;
+
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+}
+
+@mixin extra-border($size, $color) {
+    -webkit-box-shadow: 0 0 0 $size $color;
+    -moz-box-shadow: 0 0 0 $size $color;
+    box-shadow: 0 0 0 $size $color;
+}
+
+.map {
+    height: 750px;
+    width: 100%;
+    min-width: 320px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+
+    @include media($mobile) {
+        height: 600px;
+    }
+}
+
+$label-v-margin: 15px;
+$label-v-shift: -8px;
+$label-h-margin: 10px;
+$label-h-shift: -50px;
+
+a.map-node {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 7px solid $light-grey;
+    text-decoration: none;
+    white-space: nowrap;
+    color: $light-grey;
+    @include extra-border(2px, $med-bg);
+
+    &.active {
+        color: #FFF;
+        border-color: #FFF;
+        @include extra-border(2px, #000);
+    }
+
+    &:hover {
+        color: #FFF;
+        border-color: #FFF;
+        @include extra-border(2px, #000);
+    }
+
+    &.label {
+
+        &:after {
+            position: absolute;
+            content: attr(data-node-name);
+
+            @include media($mobile) {
+                font-size: 80%;
+            }
+        }
+
+        &.left {
+            &:after {
+                right: $label-v-margin;
+                top: $label-v-shift;
+            }
+        }
+
+        &.right {
+            &:after {
+                left: $label-v-margin;
+                top: $label-v-shift;
+            }
+        }
+
+        &.top {
+            &:after {
+                width: 0;
+                @include rotate(-90deg);
+                bottom: $label-h-margin;
+            }
+        }
+
+        &.bottom {
+            &:after {
+                width: 100px;
+                @include rotate(270deg);
+                text-align: right;
+                top: $label-h-margin + 50px;
+                left: $label-h-shift;
+            }
+        }
+
+    }
+}
+
+[data-node-name="North Springs"] {
+    top: 5%;
+    left: 40%;
+}
+[data-node-name="Sandy Springs"] {
+    top: 10%;
+    left: 40%;
+}
+[data-node-name="Dunwoody"] {
+    top: 15%;
+    left: 40%;
+}
+[data-node-name="Medical Center"] {
+    top: 20%;
+    left: 40%;
+}
+[data-node-name="Buckhead"] {
+    top: 25%;
+    left: 40%;
+}
+[data-node-name="Doraville"] {
+    top: 10%;
+    left: 60%;
+}
+[data-node-name="Chamblee"] {
+    top: 15%;
+    left: 60%;
+}
+[data-node-name="Brookhaven"] {
+    top: 20%;
+    left: 60%;
+}
+[data-node-name="Lenox"] {
+    top: 25%;
+    left: 60%;
+}
+[data-node-name="Lindbergh Center"] {
+    top: 30%;
+    left: 40%;
+}
+[data-node-name="Arts Center"] {
+    top: 35%;
+    left: 40%;
+}
+[data-node-name="Midtown"] {
+    top: 40%;
+    left: 40%;
+}
+[data-node-name="North Avenue"] {
+    top: 45%;
+    left: 40%;
+}
+[data-node-name="Civic Center"] {
+    top: 50%;
+    left: 40%;
+}
+[data-node-name="Peachtree Center"] {
+    top: 55%;
+    left: 40%;
+}
+[data-node-name="Five Points"] {
+    top: 60%;
+    left: 40%;
+
+    &.map-node {
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        border: 12px solid $light-grey;
+        margin-left: -6px;
+        margin-top: -5px
+    }
+
+    &.label:after {
+        display: none;
+    }
+}
+[data-node-name="Garnett"] {
+    top: 65%;
+    left: 40%;
+}
+[data-node-name="West End"] {
+    top: 70%;
+    left: 40%;
+}
+[data-node-name="Oakland City"] {
+    top: 75%;
+    left: 40%;
+}
+[data-node-name="Lakewood"] {
+    top: 80%;
+    left: 40%;
+}
+[data-node-name="East Point"] {
+    top: 85%;
+    left: 40%;
+}
+[data-node-name="College Park"] {
+    top: 90%;
+    left: 40%;
+}
+[data-node-name="Airport"] {
+    top: 95%;
+    left: 40%;
+}
+[data-node-name="HE Holmes"] {
+    top: 60%;
+    left: 6%;
+}
+[data-node-name="Bankhead"] {
+    top: 50%;
+    left: 10%;
+}
+[data-node-name="West Lake"] {
+    top: 60%;
+    left: 13%;
+}
+[data-node-name="Ashby"] {
+    top: 60%;
+    left: 20%;
+}
+[data-node-name="Vine City"] {
+    top: 60%;
+    left: 27%;
+}
+[data-node-name="Omni Dome"] {
+    top: 60%;
+    left: 33%;
+}
+[data-node-name="Georgia State"] {
+    top: 60%;
+    left: 46%;
+}
+[data-node-name="King Memorial"] {
+    top: 60%;
+    left: 52%;
+}
+[data-node-name="Inman Park"] {
+    top: 60%;
+    left: 58%;
+}
+[data-node-name="Candler Park"] {
+    top: 60%;
+    left: 64%;
+}
+[data-node-name="East Lake"] {
+    top: 60%;
+    left: 70%;
+}
+[data-node-name="Decatur"] {
+    top: 60%;
+    left: 76%;
+}
+[data-node-name="Avondale"] {
+    top: 60%;
+    left: 82%;
+}
+[data-node-name="Kensington"] {
+    top: 60%;
+    left: 88%;
+}
+[data-node-name="Indian Creek"] {
+    top: 60%;
+    left: 94%;
+}
+
+div.line {
+    position: absolute;
+
+    &.red {
+        background: $line-red;
+    }
+
+    &.gold {
+        background: $line-gold;
+    }
+
+    &.blue {
+        background: $line-blue;
+    }
+
+    &.green {
+        background: $line-green;
+    }
+
+    &.north-south {
+        width: 5px;
+    }
+
+    &.east-west {
+        height: 5px;
+    }
+}
+
+[data-line-name="North Springs to Airport"] {
+    height: 675px;
+    top: 5%;
+    left: 40%;
+
+    margin-top: 7px;
+    margin-left: 2px;
+
+    @include media($mobile) {
+        height: 540px;
+    }
+}
+
+[data-line-name="Lindbergh to Airport"] {
+    height: 502px;
+    top: 28%;
+    left: 40%;
+
+    margin-top: 7px;
+    margin-left: 7px;
+
+    @include media($mobile) {
+        height: 402px;
+    }
+}
+
+[data-line-name="Lindbergh Connector"] {
+    top: 28%;
+    left: 40%;
+    width: 20%;
+
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+[data-line-name="Doraville to Connector"] {
+    top: 10%;
+    left: 60%;
+
+    margin-top: 2px;
+    margin-left: 5px;
+
+    height: 140px;
+
+    @include media($mobile) {
+        height: 113px;
+    }
+}
+
+[data-line-name="HE Holmes to Indian Creek"] {
+    top: 60%;
+    left: 6%;
+    width: 88%;
+
+    margin-top: 7px;
+    margin-left: 5px;
+}
+
+[data-line-name="Ashby to Edgewood"] {
+    top: 60%;
+    left: 17%;
+    width: 47%;
+
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+[data-line-name="Bankhead"] {
+    top: 50%;
+    left: 10%;
+    width: 7%;
+
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+[data-line-name="Ashby Connector"] {
+    top: 50%;
+    left: 17%;
+
+    margin-top: 4px;
+    margin-left: 5px;
+
+    height: 75px;
+
+    @include media($mobile) {
+        height: 60px;
+    }
+}

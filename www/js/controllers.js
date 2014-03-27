@@ -12,11 +12,9 @@ angular.module('martaMin.controllers', [])
             });
 
             $rootScope.autoRefresh = true;
-            $scope.wasRefreshing = true;
 
             $scope.toggleRefresh = function() {
                 $rootScope.autoRefresh = !$rootScope.autoRefresh;
-                $scope.wasRefreshing = $rootScope.autoRefresh ? true : false;
             };
 
             $scope.phonegapEvents = {
@@ -25,7 +23,7 @@ angular.module('martaMin.controllers', [])
                     document.addEventListener('resume', $scope.phonegapEvents.onResume, false);
                 },
                 onPause: function() { $rootScope.autoRefresh = false; },
-                onResume: function() { $rootScope.autoRefresh = $scope.wasRefreshing ? true : false; }
+                onResume: function() { $rootScope.autoRefresh = true; }
             };
 
             $phonegap.doWhenReady($scope.phonegapEvents.bind, []);
@@ -112,7 +110,42 @@ angular.module('martaMin.controllers', [])
 
             $scope.updateTrains();
         }])
-    .controller('MapCtrl', ['$scope', 'position',
-        function($scope, position) {
+    .controller('MapCtrl', ['$scope', '$rootScope', 'position', 'stations', 'slug',
+        function($scope, $rootScope, position, stations, slug) {
+            $scope.stations = stations.list;
+            $scope.minStation = {
+                distance: 100000
+            };
 
+            $scope.findMinStation = function() {
+                for (var station in $scope.stations) {
+                    if ($scope.stations[station].distance < $scope.minStation.distance) {
+                        $scope.minStation = $scope.stations[station];
+                        $scope.minStation.slug = slug.create(station);
+                    }
+                }
+            };
+
+            $scope.updateDistances = function() {
+                position.updateDistances($scope);
+                $scope.findMinStation();
+                console.log($scope.minStation);
+            };
+
+            $scope.checkRefresh = function() {
+                if ($rootScope.autoRefresh) {
+                    $scope.updateRefresh = window.setInterval($scope.updateDistances, 2500);
+                } else {
+                    if ($scope.updateRefresh) {
+                        clearInterval($scope.updateRefresh);
+                    }
+                    $scope.updateRefresh = false;
+                }
+            };
+
+            $rootScope.$watch('autoRefresh', function() {
+                $scope.checkRefresh();
+            });
+
+            $scope.updateDistances();
         }]);

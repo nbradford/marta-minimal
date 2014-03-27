@@ -65,7 +65,9 @@ a=a.angular||(a.angular={});a.$$minErr=a.$$minErr||d;return a.module||(a.module=
         <a class="button" ng-class="pathBase == '' ? 'hidden' : ''" href="#">
           <i class="fa fa-arrow-left"></i> Back
         </a>
-        <span>&nbsp</span>
+        <a class="button" ng-class="pathBase == '' ? '' : 'hidden'" href="#/map">
+          <i class="fa fa-map-marker"></i> Map
+        </a>
       </div>
 
       <span class="title">marta.min</span>
@@ -79,6 +81,9 @@ a=a.angular||(a.angular={});a.$$minErr=a.$$minErr||d;return a.module||(a.module=
     </div>
 
     <div ng-view></div>
+  </div>
+  <div id="footer">
+    Made by Julian Popescu under the MIT License. Fork the <a href="https://github.com/jpopesculian/marta-minimal">github</a>!
   </div>
 </body>
 </html>

@@ -139,6 +139,7 @@ input {
     @include outer-container;
     background: $med-bg;
     @include box-shadow(0, 0, 10, $xdark-grey);
+    overflow: auto;
 }
 
 /* 2.1.0 HEADER */
@@ -343,4 +344,14 @@ div.header {
             }
         }
     }
+}
+
+/* 2.3.0 FOOTER */
+
+#footer {
+    @include outer-container;
+    text-align: center;
+    padding: em(15);
+    font-size: 80%;
+    color: $light-grey;
 }

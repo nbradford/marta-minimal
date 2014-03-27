@@ -1,0 +1,240 @@
+<link rel="stylesheet" type="text/css" href="css/map.css">
+<div class="map">
+    <div class="line gold east-west" data-line-name="Lindbergh Connector"></div>
+    <div class="line red north-south" data-line-name="North Springs to Airport"></div>
+    <div class="line gold north-south" data-line-name="Lindbergh to Airport"></div>
+    <div class="line gold north-south" data-line-name="Doraville to Connector"></div>
+    <div class="line blue east-west" data-line-name="HE Holmes to Indian Creek"></div>
+    <div class="line green east-west" data-line-name="Ashby to Edgewood"></div>
+    <div class="line green east-west" data-line-name="Bankhead"></div>
+    <div class="line green north-south" data-line-name="Ashby Connector"></div>
+
+    <a 
+        class="map-node label left" 
+        href="#/north-springs-station" 
+        ng-class="minStation.slug == 'north-springs-station' ? 'active' : ''" 
+        data-node-name="North Springs">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/sandy-springs-station" 
+        ng-class="minStation.slug == 'sandy-springs-station' ? 'active' : ''" 
+        data-node-name="Sandy Springs">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/dunwoody-station" 
+        ng-class="minStation.slug == 'dunwoody-station' ? 'active' : ''" 
+        data-node-name="Dunwoody">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/medical-center-station" 
+        ng-class="minStation.slug == 'medical-center-station' ? 'active' : ''" 
+        data-node-name="Medical Center">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/buckhead-station" 
+        ng-class="minStation.slug == 'buckhead-station' ? 'active' : ''" 
+        data-node-name="Buckhead">
+    </a>
+    <a 
+        class="map-node label right"
+         href="#/doraville-station" 
+         ng-class="minStation.slug == 'doraville-station' ? 'active' : ''" 
+         data-node-name="Doraville">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/chamblee-station" 
+         ng-class="minStation.slug == 'chamblee-station' ? 'active' : ''" 
+         data-node-name="Chamblee">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/brookhaven-station" 
+         ng-class="minStation.slug == 'brookhaven-station' ? 'active' : ''" 
+         data-node-name="Brookhaven">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/lenox-station" 
+         ng-class="minStation.slug == 'lenox-station' ? 'active' : ''" 
+         data-node-name="Lenox">
+        </a>
+    <a 
+        class="map-node label left" 
+        href="#/lindbergh-station" 
+        ng-class="minStation.slug == 'lindbergh-station' ? 'active' : ''" 
+        data-node-name="Lindbergh Center">
+    </a>
+    <a 
+        class="map-node label right"
+         href="#/arts-center-station" 
+         ng-class="minStation.slug == 'arts-center-station' ? 'active' : ''" 
+         data-node-name="Arts Center">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/midtown-station" 
+         ng-class="minStation.slug == 'midtown-station' ? 'active' : ''" 
+         data-node-name="Midtown">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/north-avenue-station" 
+         ng-class="minStation.slug == 'north-avenue-station' ? 'active' : ''" 
+         data-node-name="North Avenue">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/civic-center-station" 
+         ng-class="minStation.slug == 'civic-center-station' ? 'active' : ''" 
+         data-node-name="Civic Center">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/peachtree-center-station" 
+         ng-class="minStation.slug == 'peachtree-center-station' ? 'active' : ''" 
+         data-node-name="Peachtree Center">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/five-points-station" 
+         ng-class="minStation.slug == 'five-points-station' ? 'active' : ''" 
+         data-node-name="Five Points">
+        </a>
+    <a 
+        class="map-node label left" 
+        href="#/garnett-station" 
+        ng-class="minStation.slug == 'garnett-station' ? 'active' : ''" 
+        data-node-name="Garnett">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/west-end-station" 
+        ng-class="minStation.slug == 'west-end-station' ? 'active' : ''" 
+        data-node-name="West End">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/oakland-city-station" 
+        ng-class="minStation.slug == 'oakland-city-station' ? 'active' : ''" 
+        data-node-name="Oakland City">
+    </a>
+    <a 
+        class="map-node label left" 
+        href="#/lakewood-station" 
+        ng-class="minStation.slug == 'lakewood-station' ? 'active' : ''" 
+        data-node-name="Lakewood">
+    </a>
+    <a 
+        class="map-node label right"
+         href="#/east-point-station" 
+         ng-class="minStation.slug == 'east-point-station' ? 'active' : ''" 
+         data-node-name="East Point">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/college-park-station" 
+         ng-class="minStation.slug == 'college-park-station' ? 'active' : ''" 
+         data-node-name="College Park">
+        </a>
+    <a 
+        class="map-node label right"
+         href="#/airport-station" 
+         ng-class="minStation.slug == 'airport-station' ? 'active' : ''" 
+         data-node-name="Airport">
+        </a>
+    <a 
+        class="map-node label bottom
+        " href="#/he-holmes-station" 
+        ng-class="minStation.slug == 'he-holmes-station' ? 'active' : ''" 
+        data-node-name="HE Holmes">
+    </a>
+    <a 
+        class="map-node label top" h
+        ref="#/bankhead-station" 
+        ng-class="minStation.slug == 'bankhead-station' ? 'active' : ''" 
+        data-node-name="Bankhead">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/west-lake-station" 
+        ng-class="minStation.slug == 'west-lake-station' ? 'active' : ''" 
+        data-node-name="West Lake">
+    </a>
+    <a 
+        class="map-node label top" h
+        ref="#/ashby-station" 
+        ng-class="minStation.slug == 'ashby-station' ? 'active' : ''" 
+        data-node-name="Ashby">
+    </a>
+    <a 
+        class="map-node label top" h
+        ref="#/vine-city-station" 
+        ng-class="minStation.slug == 'vine-city-station' ? 'active' : ''" 
+        data-node-name="Vine City">
+    </a>
+    <a 
+        class="map-node label top" h
+        ref="#/omni-dome-station" 
+        ng-class="minStation.slug == 'omni-dome-station' ? 'active' : ''" 
+        data-node-name="Omni Dome">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/georgia-state-station" 
+        ng-class="minStation.slug == 'georgia-state-station' ? 'active' : ''" 
+        data-node-name="Georgia State">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/king-memorial-station" 
+        ng-class="minStation.slug == 'king-memorial-station' ? 'active' : ''" 
+        data-node-name="King Memorial">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/inman-park-station" 
+        ng-class="minStation.slug == 'inman-park-station' ? 'active' : ''" 
+        data-node-name="Inman Park">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/edgewood-candler-park-station" 
+        ng-class="minStation.slug == 'edgewood-candler-park-station' ? 'active' : ''" 
+        data-node-name="Candler Park">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/east-lake-station" 
+        ng-class="minStation.slug == 'east-lake-station' ? 'active' : ''" 
+        data-node-name="East Lake">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/decatur-station" 
+        ng-class="minStation.slug == 'decatur-station' ? 'active' : ''" 
+        data-node-name="Decatur">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/avondale-station" 
+        ng-class="minStation.slug == 'avondale-station' ? 'active' : ''" 
+        data-node-name="Avondale">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/kensington-station" 
+        ng-class="minStation.slug == 'kensington-station' ? 'active' : ''" 
+        data-node-name="Kensington">
+    </a>
+    <a 
+        class="map-node label bottom
+        " href="#/indian-creek-station" 
+        ng-class="minStation.slug == 'indian-creek-station' ? 'active' : ''" 
+        data-node-name="Indian Creek">
+    </a>
+</div>

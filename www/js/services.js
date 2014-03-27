@@ -9,7 +9,7 @@ angular.module('martaMin.services', [])
         function($http, $rootScope, stations) {
             
             var baseUrl = 'http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=';
-            var apikey = 'apikey';
+            var apikey = 'efe76b08-641c-4b0f-9335-3add9f1ac7b2';
 
             var errorRate = 0;
 
