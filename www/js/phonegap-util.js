@@ -14,9 +14,6 @@ var $phonegap = {
         });
     },
     doWhenReady: function(fn, args) {
-        if (!args) {
-            args = [];
-        }
         if (this.isReady) {
             fn.apply(null, args);
         } else {
